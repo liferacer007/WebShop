@@ -1,0 +1,111 @@
+<div class="navbar">
+        
+    <a class="navbar-brand h1" [routerLink]="['/home']" style="color: black;font-weight: bold;">Web<span style="color: #48cfef;"><i class="fa fa-shopping-cart" aria-hidden="true"></i>hop</span></a>
+    <div class="d-flex justify-content-evenly user-option">
+
+        <a title="Checkout" class="navbar-brand" (click)="toggleCartMenu()"><i class="fa fa-shopping-cart fa-lg" aria-hidden="true">
+            <span class="position-absolute translate-middle badge rounded-pill bg-danger" style="font-size:8px;">
+                0
+                <!-- <span class="visually-hidden">unread messages</span> -->
+          </span>
+        </i></a>
+
+        <div class="user">
+            <button class="btn btn-primary" href="#" data-target="#login" data-toggle="modal" (click)="showLoginSignup()">Login/Register</button>
+            <!-- <a><i class="fa fa-user-circle fa-lg" aria-hidden="true"></i></a> -->
+        </div>
+        </div>
+</div>
+<div class="cart-dropdown d-flex flex-column bg-body-tertiary rounded" id="cartDropdown">
+    <div class="d-flex justify-content-between p-3" style="width: 100%;">
+        <p>1 item</p>        
+        <a routerLink="cart" class="fw-semibold">Show Cart</a>
+    </div>
+    <hr class="hr pb-2">
+    <div class="d-flex flex-column" style="padding: 0 9px;top: -13px;
+    position: relative;">
+        <div class="d-flex pb-2 flex-row justify-content-between cart-items">
+            <span>Item 1 x 1</span>
+            <strong>&#8377;2000</strong>
+        </div>
+        <div class="d-flex pb-2 flex-row justify-content-between">
+            <span>Item 2 x 1</span>
+            <strong>&#8377;2000</strong>
+        </div>
+        <div class="d-flex pb-2 flex-row justify-content-between">
+            <span>Item 3 x 1</span>
+            <strong>&#8377;2000</strong>
+        </div>
+    </div>
+
+    <hr class="hr pb-2">
+
+    <div class="d-flex flex-row justify-content-between" style="padding: 0 9px;">
+        <span>Total </span>
+        <strong>&#8377;6000.00</strong>
+    </div>
+
+</div>
+
+
+<!---------Login/ Signup modal----------->
+
+<!--Trigger-->
+<!-- <a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Login/Register</a> -->
+
+<div id="login" class="modal" role="dialog" [ngClass]="{'active-modal':isLoginModal}">
+  <div class="modal-dialog">
+    
+    <div class="modal-content">
+      <div class="modal-body">
+          <div class="container" id="container" [ngClass]="{'right-panel-active': isSignupClicked}">
+            <span data-dismiss="modal" (click)="hideLoginModal()" class="close">&times;</span>
+						<div class="form-container sign-up-container">
+							<form action="#">
+								<h2>Create Account</h2>
+								<div class="social-container">
+									<a href="#" class="social" (click)="loginWithGoogle()"><i class="fab fa-google-plus-g"></i></a>
+								</div> 
+								<span>or use your email for registration</span>
+								<input type="text" placeholder="Name" />
+								<input type="email" placeholder="Email" />
+								<input type="password" placeholder="Password" />
+								<button>Sign Up</button>
+							</form>
+						</div>
+						<div class="form-container sign-in-container">
+							<form action="#">
+								<h2>Sign in</h2>
+								<div class="social-container">
+                                    <!-- <asl-google-signin-button></asl-google-signin-button> -->
+									<a href="#" class="social" (click)="loginWithGoogle()"><i class="fab fa-google-plus-g"></i></a>
+								</div>
+								<span>or use your account</span>
+								<input type="email" placeholder="Email" />
+								<input type="password" placeholder="Password" />
+								<a href="#">Forgot your password?</a>
+								<button>Sign In</button>
+							</form>
+						</div>
+						<div class="overlay-container">
+							<div class="overlay">
+								<div class="overlay-panel overlay-left">
+									<h1>Welcome Back!</h1>
+									<p>To keep connected with us please login with your personal info</p>
+									<button class="ghost" id="signIn" (click)="toggleLoginSignup('signin')">Sign In</button>
+								</div>
+								<div class="overlay-panel overlay-right">
+									<h1>Hello, Friend!</h1>
+									<p>Enter your personal details and start journey with us</p>
+									<button class="ghost" id="signUp" (click)="toggleLoginSignup('signup')">Sign Up</button>
+								</div>
+							</div>
+						</div>
+					  </div>
+      </div>
+    </div>
+  </div>  
+</div>
+
+<!---------Login/ Signup modal Ends----------->
+
